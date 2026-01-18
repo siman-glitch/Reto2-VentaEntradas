@@ -63,6 +63,6 @@ Reto2-VentaEntradas
 
 ## Autor
 Proyecto realizado por **Siman**   **jefrrey**  **houdaifa**
-1º DAM – Reto 2 - grupo 3 
+1º DAw – Reto 2 - grupo 3 
 - Eclipse IDE
 - JUnit (tests unitarios)
