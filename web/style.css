@@ -1,0 +1,269 @@
+body{
+    margin: 0;
+    padding: 0;
+background: rgb(10, 10, 10);    
+color: white;
+}
+
+/* ------ HEADER -------- */
+
+header{
+    background-color: rgba(113, 113, 113, 0.139);
+    backdrop-filter: blur(5px);
+    padding: 0;
+}
+
+.header-top{
+    display: flex;
+    height:70px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+header h1{
+    font-size: 40px;
+    color: lightgray;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+nav a{
+    text-decoration: none;
+    color: lightgray;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0 10px;
+    transition: 0.3s;
+    text-shadow: 0 5px 10px #0e1217;
+}
+
+nav a:hover{
+    color:red;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+}
+
+.search img{
+    width: 20px;
+    background-color: lightgray;
+    padding: 5px 10px;
+    margin-right: -1px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.search input{
+    padding: 7.5px 30px;
+    background-color: lightgray;
+    border: none;
+    outline : none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.header-img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ------- BODY -------- */
+
+main{
+    padding: 40px 50px;
+}
+
+/* ===== COMPRA RÁPIDA ===== */
+.quick{
+    background: white;
+    color: #111;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 40px;
+}
+
+.quick h2{
+    margin: 0 0 20px 0;
+    font-size: 24px;
+}
+
+.quick-form{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.quick-form select{
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    min-width: 180px;
+    font-size: 15px;
+}
+
+.quick-form button{
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+    background: #0a66ff;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quick-form button:hover{
+    background: #084fd1;
+}
+
+.quick-form button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#resumen{
+    margin-top: 15px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* ===== TOP PELÍCULAS ===== */
+
+.top{
+    margin-top: 30px;
+    padding: 30px 20px;
+    background: linear-gradient(180deg, #061a2b, #020b14);
+    border-radius: 20px;
+}
+
+.top h2{
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    color: lightgray;
+}
+
+.movies{
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    scroll-snap-type: x mandatory;
+}
+
+/* SCROLL */
+.movies::-webkit-scrollbar{
+    height: 10px;
+}
+
+.movies::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+}
+
+.movie{
+    flex: 0 0 auto;
+    width: 200px;
+    scroll-snap-align: start;
+    text-align: center;
+}
+
+.movie img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    transition: 0.3s;
+}
+
+.movie img:hover{
+    transform: scale(1.07);
+}
+
+.movie p{
+    margin-top: 12px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 5px 10px #0e1217;
+}
+/* ==========================  login page    ===================== */
+
+
+
+.container{
+/* container 9sir 3liha wekha drna l3naasir f lwstt  makaybanch flwst */
+display: flex;/* kaytrtbo*/
+flex-direction: column;/*katrtb colomn 3amodiya */
+justify-content: center;/* had 2 kaykhliw content f center */
+align-items: center;
+height:100vh;/* hadi bash conatainer ikbr */
+gap:40px;
+}
+.titulo{
+font-size: 15px;
+color: red;
+
+
+}
+form{
+display: flex;
+flex-direction: column;
+gap: 10px;/*masafa */
+    background: linear-gradient(180deg, #0f0f0f, #fa0d0d, #080808); /* ES: Fondo degradado | AR: خلفية متدرجة */
+padding: 30px;
+border-radius: 10px;
+box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.468);
+}
+input{
+font-size: 20px;
+padding: 5px;
+margin-bottom: 10px;
+}
+
+label{
+    font-size: 20px;
+}
+input [type = sumbit]{
+
+background-color: red;
+border: 0.1px solid black;
+
+
+}
+input [type = sumbit]:hover{
+
+background-color: rgb(249, 243, 243);
+cursor: pointer;
+transition-duration: 5s;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px){
+    .header-top{
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    nav{
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    main{
+        padding: 25px;
+    }
+}

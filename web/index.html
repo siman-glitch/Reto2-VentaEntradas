@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mycine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <h1><span style="color: red;">MY </span>CINEMA</h1>
+
+    <nav>
+      <a href="index.html">inicio</a>
+      <a href="#">películas</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+
+    <div class="search">
+      <img src="imagenes/search.png" alt="search">
+      <input type="text" placeholder="BUSCAR">
+    </div>
+  </div>
+
+  <img src="imagenes/avatar.jpg" alt="Banner cine" class="header-img">
+</header>
+
+<main>
+
+  <!-- ===== COMPRA RÁPIDA ===== -->
+  <section class="quick">
+    <h2>Compra rápida</h2>
+
+    <div class="quick-form">
+      <select id="pelicula">
+        <option value="" selected disabled>Película</option>
+      </select>
+
+      <select id="fecha" disabled>
+        <option value="" selected disabled>Fecha</option>
+      </select>
+
+      <select id="sesion" disabled>
+        <option value="" selected disabled>Sesión</option>
+      </select>
+
+      <button id="comprar" disabled>Comprar entradas</button>
+    </div>
+
+    <p id="resumen"></p>
+  </section>
+
+  <!-- ===== TOP PELÍCULAS ===== -->
+  <section class="top">
+    <h2>TOP PELÍCULAS</h2>
+
+    <div class="movies">
+
+      <article class="movie">
+        <img src="imagenes/xd.jpg" alt="Película 1">
+        <p>PELÍCULA 1</p>
+      </article>
+
+      <article class="movie">
+        <img src="imagenes/avatarr1.jpg" alt="Película 2">
+        <p>PELÍCULA 2</p>
+      </article>
+
+      <article class="movie">
+        <img src="imagenes/superman.jpg" alt="Película 3">
+        <p>PELÍCULA 3</p>
+      </article>
+
+      <article class="movie">
+        <img src="imagenes/strange.jpg" alt="Película 4">
+        <p>PELÍCULA 4</p>
+      </article>
+
+      <article class="movie">
+        <img src="imagenes/stich.jpg" alt="Película 5">
+        <p>PELÍCULA 5</p>
+      </article>
+
+      <article class="movie">
+        <img src="imagenes/strange.jpg" alt="Película 6">
+        <p>PELÍCULA 6</p>
+      </article>
+
+      <article class="movie">
+        <img src="imagenes/stranger.jpg" alt="Película 7">
+        <p>PELÍCULA 7</p>
+      </article>
+
+      <article class="movie">
+        <img src="imagenes/prision.jpg" alt="Película 8">
+        <p>PELÍCULA 8</p>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // ===== CARTELERA (8 películas) =====
+  const cartelera = {
+    "PELÍCULA 1": {
+      "2026-01-16": ["16:00", "18:30", "21:00"],
+      "2026-01-17": ["17:00", "19:30"]
+    },
+    "PELÍCULA 2": {
+      "2026-01-16": ["15:30", "20:00"],
+      "2026-01-18": ["18:00", "22:00"]
+    },
+    "PELÍCULA 3": {
+      "2026-01-19": ["16:15", "19:00", "21:45"]
+    },
+    "PELÍCULA 4": {
+      "2026-01-17": ["18:00", "20:30"],
+      "2026-01-20": ["17:15", "22:10"]
+    },
+    "PELÍCULA 5": {
+      "2026-01-18": ["17:30", "22:00"],
+      "2026-01-21": ["16:40", "19:10"]
+    },
+    "PELÍCULA 6": {
+      "2026-01-16": ["16:20", "20:20"],
+      "2026-01-22": ["18:10"]
+    },
+    "PELÍCULA 7": {
+      "2026-01-23": ["18:45", "21:15"]
+    },
+    "PELÍCULA 8": {
+      "2026-01-24": ["17:00", "20:00"]
+    }
+  };
+
+  const pelicula = document.getElementById("pelicula");
+  const fecha = document.getElementById("fecha");
+  const sesion = document.getElementById("sesion");
+  const comprar = document.getElementById("comprar");
+  const resumen = document.getElementById("resumen");
+
+  // Cargar películas en el select
+  Object.keys(cartelera).forEach(p => {
+    const opt = document.createElement("option");
+    opt.value = p;
+    opt.textContent = p;
+    pelicula.appendChild(opt);
+  });
+
+  // Al elegir película -> cargar fechas
+  pelicula.addEventListener("change", () => {
+    fecha.innerHTML = '<option selected disabled>Fecha</option>';
+    sesion.innerHTML = '<option selected disabled>Sesión</option>';
+    fecha.disabled = false;
+    sesion.disabled = true;
+    comprar.disabled = true;
+    resumen.textContent = "";
+
+    Object.keys(cartelera[pelicula.value]).forEach(f => {
+      const opt = document.createElement("option");
+      opt.value = f;
+      opt.textContent = f;
+      fecha.appendChild(opt);
+    });
+  });
+
+  // Al elegir fecha -> cargar sesiones
+  fecha.addEventListener("change", () => {
+    sesion.innerHTML = '<option selected disabled>Sesión</option>';
+    sesion.disabled = false;
+    comprar.disabled = true;
+    resumen.textContent = "";
+
+    cartelera[pelicula.value][fecha.value].forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      sesion.appendChild(opt);
+    });
+  });
+
+  // Al elegir sesión -> activar comprar y mostrar resumen
+  sesion.addEventListener("change", () => {
+    comprar.disabled = false;
+    resumen.textContent = `Has elegido: ${pelicula.value} - ${fecha.value} - ${sesion.value}`;
+  });
+
+  // Comprar
+  comprar.addEventListener("click", () => {
+    alert(
+      `Compra realizada:\nPelícula: ${pelicula.value}\nFecha: ${fecha.value}\nSesión: ${sesion.value}`
+    );
+  });
+</script>
+
+</body>
+</html>
