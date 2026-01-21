@@ -19,35 +19,6 @@ Toda la información se apoya en una base de datos relacional MySQL.
 - HTML5 / CSS3 / JavaScript (web dinámica)
 - Git y GitHub (control de versiones)
 
-- ## Estructura del repositorio
-
-El repositorio se organiza de la siguiente manera para facilitar el mantenimiento y la comprensión del proyecto:
-
-Reto2-VentaEntradas
- ├ CineApp/              → Aplicación de escritorio desarrollada en Java
- │   ├ src/              → Código fuente del proyecto
- │   ├ pojos/            → Clases de dominio
- │   ├ dao/              → Acceso a datos
- │   └ connection/       → Conexión con la base de datos
- │
- ├ web/                  → Página web para la simulación de la compra
- │   ├ index.html        → Página principal
- │   ├ login.html        → Página de login
- │   ├ style.css         → Estilos CSS
- │   └ imagenes/         → Recursos gráficos
- │
- ├ bases de datos/       → Scripts de la base de datos
- │   ├ script.sql        → Creación de la base de datos y tablas
- │   ├ inserts.sql       → Inserción de datos de prueba
- │   └ consultas.sql     → Consultas SQL solicitadas en el reto
- │
- ├ documentacion/        → Documentación del diseño
- │   ├ MODELO_ER.jpg     → Diagrama Entidad-Relación
- │   ├ Normalizacion.pdf → Proceso de normalización
- │   └ Universo_del_discurso.pdf
- │
- ├ README.md             → Descripción general del proyecto
- └ LICENSE               → Licencia del proyecto
 
 ## Ejecución del proyecto
 
