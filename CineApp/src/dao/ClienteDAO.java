@@ -73,7 +73,7 @@ public class ClienteDAO {
 				}
 				return c;
 			}
-	public void insert(	Cliente cliente) {
+	public void insertCliente(	Cliente cliente) {
 		// La conexion con BBDD
 		Connection connection = null;
 

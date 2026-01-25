@@ -1,19 +1,34 @@
 package vista;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import dao.ClienteDAO;
 import dao.PeliculaDAO;
 import pojos.Cliente;
+import pojos.Entrada;
+import dao.SesionDAO;
+import gestor.GestorCompra;
 import pojos.Pelicula;
+import pojos.Sesion;
+import vista.MenuCompra;
 
 public class Menu {
 
 	private static Scanner sc = null;
+	private MenuCompra compra;
+	private MenuPeliculas pelis;
+	private GestorCompra gest;
+	private MenuSesiones ses;
+
 
 	public Menu() {
 		sc = new Scanner(System.in);
+		pelis = new MenuPeliculas();
+		gest = new GestorCompra(sc);
+		ses=new MenuSesiones();
+		compra = new MenuCompra(sc, pelis, ses, gest);
 	}
 
 	/**
@@ -32,8 +47,7 @@ public class Menu {
 	public void login() {
 		inicio();
 		ClienteDAO clientedao = new ClienteDAO();
-		boolean salir = false;
-		while (!salir) {
+		while (true) {
 			System.out.println(" Introduce tu correo electronico:  ");
 			String correo = sc.nextLine().trim();
 			System.out.print("Introduce tu contrasena: ");
@@ -45,78 +59,24 @@ public class Menu {
 				Cliente cliente = clientedao.logincliente(correo, contrasena);
 				if (cliente != null) {
 					System.out.println("Bienvenido" + " " + cliente.getNombre());
-					// method siempe se guarda en una varibale y arry list porque elgir pelicula
-					// necessita lista paga que se elegi
+					// Después del login, arrancamos el flujo de compra
+					compra.iniciar();
+					break;
 
-					ArrayList<Pelicula> peliculas = mostrarpeliculas();
-					Pelicula peliElegida = elegirPeli(peliculas);
-
-					if (peliElegida != null) {
-						System.out.println("Has elegido: " + peliElegida.getTitulo());
-					}
-
-					salir = true;// login true
 				} else {
 					System.out.println("Error al iniciar sesión ");
-					salir = preguntarRegistro();
+					boolean salir = preguntarRegistro();
+					if (salir)
+						break;
 
 				}
 			}
-
 		}
 
 	}
 
-	private void menuPeliculas() {
-
-		ArrayList<Pelicula> peliculas = mostrarpeliculas();
-		Pelicula peliElegida = elegirPeli(peliculas);
-		if (peliElegida != null) {
-			System.out.println("Has elegido: " + peliElegida.getTitulo());
-			// Aquí se continuará con la selección de sesiones
-
-		}
-
-	}
-
-	public ArrayList<Pelicula> mostrarpeliculas() {
-
-		PeliculaDAO pelidao = new PeliculaDAO();
-		// hna hit getallpli katrjaa arry list maxi peli whda
-		ArrayList<Pelicula> peliculas = pelidao.getAllpeliculas();
-		if (peliculas == null || peliculas.isEmpty()) {
-			System.out.println("No hay películas disponibles.");
-			return null;
-		}
-		System.out.println("*******************PELÍCULAS DISPONIBLES**********************");
-		for (int i = 0; i < peliculas.size(); i++) {
-			// p wlat db film wahd
-			Pelicula p = peliculas.get(i);
-			System.out.println((i + 1) + ". " + peliculas.get(i).getTitulo());
-		}
-		// nrj3o la liste
-		return peliculas;
-	}
-
-	public Pelicula elegirPeli(ArrayList<Pelicula> peliculas) {
-		System.out.print("¿Quiere elegir una película para continuar? (si/no): ");
-		String resp = sc.nextLine().trim().toLowerCase();
-		if (!resp.equals("si")) {
-			return null;
-		}
-		System.out.println("Elige una pelicula (1-" + peliculas.size() + "):");
-		try {
-			int opcion = Integer.parseInt(sc.nextLine().trim());
-			if (opcion < 1 || opcion > peliculas.size()) {
-				return null;
-			}
-			return peliculas.get(opcion - 1);
-		} catch (Exception e) {
-
-			return null;
-		}
-
-	}
+	
+	
 
 	public static boolean preguntarRegistro() {
 		System.out.print("¿Quieres registrarte y disfrutar de ventajas exclusivas? (si/no?): ");
@@ -168,7 +128,7 @@ public class Menu {
 		System.out.print("Contraseña: ");
 		c.setContrasena(sc.nextLine().trim());
 		try {
-			clientedao.insert(c);
+			clientedao.insertCliente(c);
 			System.out.println("\nRegistro completado correctamente.\n");
 		} catch (Exception e) {
 			System.out.println("\nError al registrar.\n");
@@ -176,4 +136,9 @@ public class Menu {
 
 	}
 
+
+		
 }
+		
+		
+

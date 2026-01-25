@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connection.DBConnection;
-import pojos.Cliente;
 import pojos.Pelicula;
 
 public class PeliculaDAO {
