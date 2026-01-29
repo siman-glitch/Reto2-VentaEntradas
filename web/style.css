@@ -1,269 +1,455 @@
+/* =================== GENERAL =================== */
 body{
-    margin: 0;
-    padding: 0;
-background: rgb(10, 10, 10);    
-color: white;
+  margin: 0;
+  padding: 0;
+  background: rgb(10,10,10);
+  color: white;
+  padding-bottom: 300px; /* espacio para compra rápida fija */
 }
 
-/* ------ HEADER -------- */
-
+/* =================== HEADER =================== */
 header{
-    background-color: rgba(113, 113, 113, 0.139);
-    backdrop-filter: blur(5px);
-    padding: 0;
+  background-color: rgba(113,113,113,0.14);
+  backdrop-filter: blur(5px);
 }
 
 .header-top{
-    display: flex;
-    height:70px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
+  display: flex;
+  height:70px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
 }
 
 header h1{
-    font-size: 40px;
-    color: lightgray;
+  font-size: 40px;
+  color: lightgray;
 }
 
 nav{
-    display: flex;
-    justify-content: space-between;
-    width: 400px;
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
 }
 
 nav a{
-    text-decoration: none;
-    color: lightgray;
-    font-size: 20px;
-    font-weight: 700;
-    padding: 0 10px;
-    transition: 0.3s;
-    text-shadow: 0 5px 10px #0e1217;
+  text-decoration: none;
+  color: lightgray;
+  font-size: 20px;
+  font-weight: 700;
+  transition: 0.3s;
 }
 
 nav a:hover{
-    color:red;
+  color:red;
 }
 
 .search{
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search img{
-    width: 20px;
-    background-color: lightgray;
-    padding: 5px 10px;
-    margin-right: -1px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+  width: 20px;
+  background: lightgray;
+  padding: 5px 10px;
+  border-radius: 10px 0 0 10px;
 }
 
 .search input{
-    padding: 7.5px 30px;
-    background-color: lightgray;
-    border: none;
-    outline : none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+  padding: 7.5px 30px;
+  background: lightgray;
+  border: none;
+  outline: none;
+  border-radius: 0 10px 10px 0;
 }
 
 .header-img{
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  background: black;
 }
 
-/* ------- BODY -------- */
-
+/* =================== MAIN =================== */
 main{
-    padding: 40px 50px;
+  padding: 40px 50px;
 }
 
-/* ===== COMPRA RÁPIDA ===== */
+/* =================== COMPRA RÁPIDA =================== */
 .quick{
-    background: white;
-    color: #111;
-    border-radius: 18px;
-    padding: 25px;
-    margin-bottom: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  color: #111;
+  border-radius: 18px 18px 0 0;
+  padding: 25px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
 }
 
-.quick h2{
-    margin: 0 0 20px 0;
-    font-size: 24px;
+.quick > *{
+  max-width: 1100px;
+  width: 100%;
 }
 
 .quick-form{
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .quick-form select{
-    padding: 12px 14px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    min-width: 180px;
-    font-size: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
 }
 
 .quick-form button{
-    padding: 12px 22px;
-    border: none;
-    border-radius: 12px;
-    background: #0a66ff;
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.quick-form button:hover{
-    background: #084fd1;
-}
-
-.quick-form button:disabled{
-    opacity: 0.5;
-    cursor: not-allowed;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: none;
+  background: #0a66ff;
+  color: white;
+  font-weight: 700;
 }
 
 #resumen{
-    margin-top: 15px;
-    color: #333;
-    font-weight: 600;
+  margin-top: 10px;
+  color: #333;
 }
 
-/* ===== TOP PELÍCULAS ===== */
-
+/* =================== TOP PELÍCULAS =================== */
 .top{
-    margin-top: 30px;
-    padding: 30px 20px;
-    background: linear-gradient(180deg, #061a2b, #020b14);
-    border-radius: 20px;
+  margin-top: 30px;
+  padding: 30px 20px 5px;
+  background: linear-gradient(180deg,#061a2b,#020b14);
+  border-radius: 20px;
 }
 
 .top h2{
-    text-align: center;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
-    color: lightgray;
+  text-align: center;
+  margin-bottom: 20px;
+  color: lightgray;
 }
 
 .movies{
-    display: flex;
-    gap: 25px;
-    overflow-x: auto;
-    padding-bottom: 15px;
-    scroll-snap-type: x mandatory;
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
-/* SCROLL */
 .movies::-webkit-scrollbar{
-    height: 10px;
+  height: 8px;
 }
 
 .movies::-webkit-scrollbar-thumb{
-    background: rgba(255,255,255,0.2);
-    border-radius: 20px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
 }
 
 .movie{
-    flex: 0 0 auto;
-    width: 200px;
-    scroll-snap-align: start;
-    text-align: center;
+  width: 200px;
+  flex: 0 0 auto;
+  text-align: center;
 }
 
 .movie img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-    transition: 0.3s;
-}
-
-.movie img:hover{
-    transform: scale(1.07);
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .movie p{
-    margin-top: 12px;
-    font-weight: 800;
-    color: white;
-    text-shadow: 0 5px 10px #0e1217;
+  margin-top: 10px;
+  font-weight: 700;
 }
+
+/* =================== PRÓXIMAMENTE =================== */
+.proximamente{
+  margin-top: 5px;
+  padding: 20px 0;
+}
+
+.proximamente-inner{
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.proximamente-inner h2{
+  margin-bottom: 18px;
+  letter-spacing: 3px;
+  font-size: 28px;
+  color: white;
+}
+
+.trailer-box{
+  border-radius: 20px;
+  overflow: hidden;
+  background: black;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+.trailer-box video{
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  display: block;
+}
+
+.proxi-texto{
+  margin-top: 20px;
+  color: #e0e0e0;          /*  texto visible */
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ==========================  login page    ===================== */
 
-
-
-.container{
-/* container 9sir 3liha wekha drna l3naasir f lwstt  makaybanch flwst */
-display: flex;/* kaytrtbo*/
-flex-direction: column;/*katrtb colomn 3amodiya */
-justify-content: center;/* had 2 kaykhliw content f center */
-align-items: center;
-height:100vh;/* hadi bash conatainer ikbr */
-gap:40px;
-}
-.titulo{
-font-size: 15px;
-color: red;
-
-
-}
-form{
-display: flex;
-flex-direction: column;
-gap: 10px;/*masafa */
-    background: linear-gradient(180deg, #0f0f0f, #fa0d0d, #080808); /* ES: Fondo degradado | AR: خلفية متدرجة */
-padding: 30px;
-border-radius: 10px;
-box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.468);
-}
-input{
-font-size: 20px;
-padding: 5px;
-margin-bottom: 10px;
+.imglogin{
+  background: url("imagenes/logo4.avif") center/cover no-repeat;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-label{
-    font-size: 20px;
-}
-input [type = sumbit]{
-
-background-color: red;
-border: 0.1px solid black;
-
-
-}
-input [type = sumbit]:hover{
-
-background-color: rgb(249, 243, 243);
-cursor: pointer;
-transition-duration: 5s;
+.imglogin::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1;
 }
 
-/* ===== RESPONSIVE ===== */
+.imglogin .content{
+  position: relative;
+  z-index: 2;
+  width: 520px;
+  max-width: 92vw;
+  padding: 60px 50px;
+  text-align: center;
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.55);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+}
+
+.imglogin .content h2{
+  color: #fff;
+  font-size: 42px;
+  margin-bottom: 26px;
+}
+
+.imglogin .correo,
+.imglogin .contrasena{
+  width: 100%;
+  height: 46px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  margin-bottom: 14px;
+}
+
+/* input style */
+.imglogin .correo input,
+.imglogin .contrasena input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #222;
+}
+
+.imglogin .contrasena{
+  position: relative;
+  padding-right: 10px; /* space for mostrar */
+}
+
+.imglogin .mostrar{
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ===== button ===== */
+.imglogin .btn{
+  width: 100%;
+  margin-top: 8px;
+}
+
+.imglogin button.btn{
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background: red;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.imglogin button.btn:hover{
+  filter: brightness(0.92);
+}
+
+/* register */
+.imglogin .registra{
+  margin-top: 18px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.imglogin .registra a{
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* =================== RESPONSIVE =================== */
 @media (max-width: 900px){
-    .header-top{
-        flex-direction: column;
-        height: auto;
-        gap: 15px;
-        padding: 20px;
-    }
+  main{
+    padding: 25px;
+  }
 
-    nav{
-        width: 100%;
-        justify-content: center;
-        gap: 15px;
-    }
+  .proximamente-inner{
+    max-width: 92vw;
+  }
 
-    main{
-        padding: 25px;
-    }
+  body{
+    padding-bottom: 340px;
+  }
 }
+
+/* =================== PELICULAS (CARTELERA) =================== */
+.cartelera{
+  margin-top: 20px;
+  padding: 25px 20px;
+  background: linear-gradient(180deg,#061a2b,#020b14);
+  border-radius: 20px;
+}
+
+.cartelera h2{
+  text-align: center;
+  margin-bottom: 25px;
+  color: lightgray;
+  letter-spacing: 3px;
+}
+
+.lista-peliculas{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pelicula-card{
+  display: flex;
+  gap: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.pelicula-img{
+  width: 190px;
+  height: 270px;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.pelicula-info{
+  padding: 18px 18px 16px;
+  flex: 1;
+}
+
+.pelicula-info h3{
+  margin: 0 0 8px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.pelicula-desc{
+  margin: 0 0 14px;
+  color: #e0e0e0;
+  line-height: 1.6;
+  max-width: 850px;
+}
+
+.sin-horarios{
+  color: #ffb3b3;
+  font-weight: 700;
+}
+
+.pelicula-compra option{
+  background: white;
+  color: black;
+}
+
+.pelicula-compra select{
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  outline: none;
+}
+
+.pelicula-compra select:disabled{
+  opacity: 0.5;
+}
+
+.btn-comprar{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #0a66ff;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-comprar:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.resumen-compra{
+  margin-top: 10px;
+  color: #cfcfcf;
+  font-size: 14px;
+}
+
+/* responsive */
+@media (max-width: 700px){
+  .pelicula-card{
+    flex-direction: column;
+  }
+
+  .pelicula-img{
+    width: 100%;
+    height: 260px;
+  }
+}
+

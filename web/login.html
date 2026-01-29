@@ -3,28 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>login</title>
+        <link rel="stylesheet" href="style.css">
 
 </head>
-<body >
-<div class="container">
-    <div class="titulo">
-   <h1>Iniciar sesión</h1>
-    </div>
-    <form action="">
-<label form="email">Correo electrónico</label>
-<input type="email" required placeholder="Correo electrónico"  id="email">
-<label form="password" >Contraseña</label>
-<input type=" password" required placeholder="Contraseña" id="password">
+<body>
+    <div class="imglogin">
+    <div class="content">
+<h2>Iniciar sesión</h2>
 
-<div class="recordar la contrasena">¿Olvidaste tu Contraseña?</div>
-<p>¿Todavia no tienes cuenta ? <a href="#">Regístrate</a></p>
-<button class="btn" type="submit">Iniciar sesión</button>
+<form action="#">
+<div class="correo">
+<input type="email" required placeholder="Correo electrónico"  >
 </div>
 
-    </form>
-</body>
+<div class="contrasena">
+<input type="password" class="passwordd" required placeholder="Contraseña"  >
+<span class="mostrar">mostrar</span>
+</div>
+<div class="btn">
+    <button class="btn" type="submit">Iniciar sesión</button>
 
+</div>
+</form>
+   <p class="registrar">¿Todavia no tienes cuenta ? <a href="#">Regístrate</a></p>
+
+
+
+    </div>
+    </div>
+   <script>
+  const pass_field = document.querySelector('.passwordd');
+  const showBtn = document.querySelector('.mostrar');
+
+  showBtn.addEventListener('click', function () {
+    if (pass_field.type === 'password') {
+      pass_field.type = 'text';
+      showBtn.textContent = 'ocultar';
+      showBtn.style.color = '#3498db';
+    } else {
+      pass_field.type = 'password';
+      showBtn.textContent = 'mostrar';
+      showBtn.style.color = '#222';
+    }
+  });
+</script>
+
+</body>
 </html>
