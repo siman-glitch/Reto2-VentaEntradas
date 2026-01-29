@@ -1,15 +1,17 @@
 package main;
 
-import vista.Menu;
+import vista.MenuCompra;
+import vista.MenuPrincipal;
 
 public class Launcher {
 
 
 	    public static void main(String[] args) {
-        new Menu().login();
-	      
+
+	    	MenuPrincipal menu = new MenuPrincipal();
+	    	menu.login();	 
 	    }
-	}
+}
 
 	
 

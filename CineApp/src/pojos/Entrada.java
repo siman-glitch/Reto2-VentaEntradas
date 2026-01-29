@@ -10,7 +10,7 @@ public class Entrada {
 	    
 	    private Sesion sesion;
 	    private Compra compra;
-	    
+	    private int idPelicula;
 	  
 
 		
@@ -74,6 +74,8 @@ public class Entrada {
 
 		public Entrada() {
 	    }
+
+
 		  @Override
 			public String toString() {
 				return "Entrada [identrada=" + identrada + ", numpersonas=" + numpersonas + ", precio=" + precio

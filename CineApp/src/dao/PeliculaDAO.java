@@ -15,7 +15,12 @@ public class PeliculaDAO {
 	public ArrayList<Pelicula> getAllpeliculas() {
 		ArrayList<Pelicula> ret = null;
 		// SQL que queremos lanzar
-		String sql = "select * from pelicula";
+		String sql =
+			    "SELECT p.* " +
+			    "FROM pelicula p " +
+			    "JOIN sesion s ON s.idpelicula = p.idpelicula " +
+			    "GROUP BY p.idpelicula, p.titulo, p.duracion, p.genero, p.precio " +
+			    "ORDER BY MIN(CONCAT(s.fecha,' ',s.horainicio)) ASC";
 
 		// La conexion con BBDD
 		Connection connection = null;
