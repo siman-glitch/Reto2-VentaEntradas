@@ -14,7 +14,7 @@
 
     <nav>
       <a href="index.html">inicio</a>
-      <a href="#">películas</a>
+      <a href="peliculas.html">peliculas</a>
       <a href="login.html">Iniciar sesión</a>
     </nav>
 
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <img src="imagenes/avatar.jpg" alt="Banner cine" class="header-img">
+  <img src="imagenes/avatar1.jpg" alt="Banner cine" class="header-img">
 </header>
 
 <main>
@@ -94,8 +94,23 @@
       </article>
 
       <article class="movie">
-        <img src="imagenes/prision.jpg" alt="Película 8">
+        <img src="imagenes/halloween.jpg" alt="Película 8">
         <p>PELÍCULA 8</p>
+      </article>
+
+       <article class="movie">
+        <img src="imagenes/thor.jpg" alt="Película 9">
+        <p>PELÍCULA 9</p>
+      </article>
+
+       <article class="movie">
+        <img src="imagenes/joker2.jpg" alt="Película 10">
+        <p>PELÍCULA 10</p>
+      </article>
+
+       <article class="movie">
+        <img src="imagenes/harry.jpg" alt="Película 11">
+        <p>PELÍCULA 11</p>
       </article>
 
     </div>
@@ -106,36 +121,45 @@
 <script>
   // ===== CARTELERA (8 películas) =====
   const cartelera = {
-    "PELÍCULA 1": {
-      "2026-01-16": ["16:00", "18:30", "21:00"],
-      "2026-01-17": ["17:00", "19:30"]
-    },
-    "PELÍCULA 2": {
-      "2026-01-16": ["15:30", "20:00"],
-      "2026-01-18": ["18:00", "22:00"]
-    },
-    "PELÍCULA 3": {
-      "2026-01-19": ["16:15", "19:00", "21:45"]
-    },
-    "PELÍCULA 4": {
-      "2026-01-17": ["18:00", "20:30"],
-      "2026-01-20": ["17:15", "22:10"]
-    },
-    "PELÍCULA 5": {
-      "2026-01-18": ["17:30", "22:00"],
-      "2026-01-21": ["16:40", "19:10"]
-    },
-    "PELÍCULA 6": {
-      "2026-01-16": ["16:20", "20:20"],
-      "2026-01-22": ["18:10"]
-    },
-    "PELÍCULA 7": {
-      "2026-01-23": ["18:45", "21:15"]
-    },
-    "PELÍCULA 8": {
-      "2026-01-24": ["17:00", "20:00"]
-    }
-  };
+  "PELÍCULA 1": {
+    "2026-01-16": ["16:00", "18:30", "21:00"],
+    "2026-01-17": ["17:00", "19:30"]
+  },
+  "PELÍCULA 2": {
+    "2026-01-16": ["15:30", "20:00"],
+    "2026-01-18": ["18:00", "22:00"]
+  },
+  "PELÍCULA 3": {
+    "2026-01-19": ["16:15", "19:00", "21:45"]
+  },
+  "PELÍCULA 4": {
+    "2026-01-17": ["18:00", "20:30"],
+    "2026-01-20": ["17:15", "22:10"]
+  },
+  "PELÍCULA 5": {
+    "2026-01-18": ["17:30", "22:00"],
+    "2026-01-21": ["16:40", "19:10"]
+  },
+  "PELÍCULA 6": {
+    "2026-01-16": ["16:20", "20:20"],
+    "2026-01-22": ["18:10"]
+  },
+  "PELÍCULA 7": {
+    "2026-01-23": ["18:45", "21:15"]
+  },
+  "PELÍCULA 8": {
+    "2026-01-24": ["17:00", "20:00"]
+  },
+  "PELÍCULA 9": {
+    "2026-01-25": ["16:00", "19:00"]
+  },
+  "PELÍCULA 10": {
+    "2026-01-26": ["17:30", "21:00"]
+  },
+  "PELÍCULA 11": {
+    "2026-01-27": ["18:00"]
+  }
+};
 
   const pelicula = document.getElementById("pelicula");
   const fecha = document.getElementById("fecha");
@@ -196,6 +220,27 @@
     );
   });
 </script>
+
+<section class="proximamente">
+  <div class="proximamente-inner">
+    <h2>PRÓXIMAMENTE</h2>
+
+    <div class="trailer-box">
+      <video controls poster="imagenes/squid.jpg">
+        <source src="imagenes/squid game.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <p class="proxi-texto">
+      <b>Squid Game 2</b> · Thriller · Estreno 2026<br>
+      Una nueva temporada llena de tensión, juegos extremos y decisiones que lo cambian todo.
+      La tercera y última temporada de El Juego del Calamar (Squid Game) se estrenará en Mycinema el 27 de junio de 2026. Esta entrega final promete explorar la rebelión de Gi-hun contra los organizadores, la caída del sistema de juegos y el destino de los supervivientes. Además, se desarrolla una versión estadounidense producida por David Fincher. 
+ 
+</p>
+
+
+  </div>
+</section>
 
 </body>
 </html>
