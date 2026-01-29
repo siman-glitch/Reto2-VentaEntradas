@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+        <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="imglogin">
+    <div class="content">
+<h2>Iniciar sesión</h2>
+
+<form action="#">
+<div class="correo">
+<input type="email" required placeholder="Correo electrónico"  >
+</div>
+
+<div class="contrasena">
+<input type="password" class="passwordd" required placeholder="Contraseña"  >
+<span class="mostrar">mostrar</span>
+</div>
+<div class="btn">
+    <button class="btn" type="submit">Iniciar sesión</button>
+
+</div>
+</form>
+   <p class="registrar">¿Todavia no tienes cuenta ? <a href="#">Regístrate</a></p>
+
+
+
+    </div>
+    </div>
+   <script>
+  const pass_field = document.querySelector('.passwordd');
+  const showBtn = document.querySelector('.mostrar');
+
+  showBtn.addEventListener('click', function () {
+    if (pass_field.type === 'password') {
+      pass_field.type = 'text';
+      showBtn.textContent = 'ocultar';
+      showBtn.style.color = '#3498db';
+    } else {
+      pass_field.type = 'password';
+      showBtn.textContent = 'mostrar';
+      showBtn.style.color = '#222';
+    }
+  });
+</script>
+
+</body>
+</html>

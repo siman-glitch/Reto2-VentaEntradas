@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pelíilas - MyCinema</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<header>
+  <div class="header-top">
+    <h1><span style="color: red;">MY </span>CINEMA</h1>
+
+    <nav>
+      <a href="index.html">inicio</a>
+      <a href="peliculas.html">películas</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+
+    <div class="search">
+      <img src="imagenes/search.png" alt="search">
+      <input id="buscador" type="text" placeholder="BUSCAR">
+    </div>
+  </div>
+
+  <img src="imagenes/cine.jpg" alt="Banner cine" class="header-img">
+</header>
+
+<main>
+  <section class="cartelera">
+    <h2>CARTELERA</h2>
+
+    <div id="listaPeliculas" class="lista-peliculas">
+      <!-- Se rellena con JS -->
+    </div>
+  </section>
+</main>
+
+<script>
+  // ===== CARTELERA (las fechas/horas que ya tenías) =====
+  const cartelera = {
+    "PELÍCULA 1": { "2026-01-16": ["16:00", "18:30", "21:00"], "2026-01-17": ["17:00", "19:30"] },
+    "PELÍCULA 2": { "2026-01-16": ["15:30", "20:00"], "2026-01-18": ["18:00", "22:00"] },
+    "PELÍCULA 3": { "2026-01-19": ["16:15", "19:00", "21:45"] },
+    "PELÍCULA 4": { "2026-01-17": ["18:00", "20:30"], "2026-01-20": ["17:15", "22:10"] },
+    "PELÍCULA 5": { "2026-01-18": ["17:30", "22:00"], "2026-01-21": ["16:40", "19:10"] },
+    "PELÍCULA 6": { "2026-01-16": ["16:20", "20:20"], "2026-01-22": ["18:10"] },
+    "PELÍCULA 7": { "2026-01-23": ["18:45", "21:15"] },
+    "PELÍCULA 8": { "2026-01-24": ["17:00", "20:00"] },
+    "PELÍCULA 9": { "2026-01-25": ["16:00", "19:00"] },
+    "PELÍCULA 10": { "2026-01-26": ["17:30", "21:00"] },
+    "PELÍCULA 11": { "2026-01-27": ["18:00"] }
+  };
+
+  // ===== Datos para mostrar (imagen + descripción) =====
+  const infoPeliculas = [
+    { titulo: "PELÍCULA 1", img: "imagenes/xd.jpg", desc: "Un héroe inesperado descubre un secreto que puede cambiarlo todo." },
+    { titulo: "PELÍCULA 2", img: "imagenes/avatarr1.jpg", desc: "Aventura épica en un mundo espectacular lleno de peligros y belleza." },
+    { titulo: "PELÍCULA 3", img: "imagenes/superman.jpg", desc: "Acción y valentía: una amenaza global pone a prueba al protagonista." },
+    { titulo: "PELÍCULA 4", img: "imagenes/strange.jpg", desc: "Misterio y magia: un viaje por realidades que no deberían existir." },
+    { titulo: "PELÍCULA 5", img: "imagenes/stich.jpg", desc: "Comedia y emoción: amistad, caos y un toque de ternura." },
+    { titulo: "PELÍCULA 6", img: "imagenes/strange.jpg", desc: "Un thriller con giros inesperados y una verdad difícil de aceptar." },
+    { titulo: "PELÍCULA 7", img: "imagenes/stranger.jpg", desc: "Suspenso y tensión: nada es lo que parece en esta historia." },
+    { titulo: "PELÍCULA 8", img: "imagenes/halloween.jpg", desc: "Terror clásico: una noche que nadie olvidará… si sobreviven." },
+    { titulo: "PELÍCULA 9", img: "imagenes/thor.jpg", desc: "Fantasía y acción: una batalla legendaria con poderes increíbles." },
+    { titulo: "PELÍCULA 10", img: "imagenes/joker2.jpg", desc: "Drama intenso: el límite entre la locura y la realidad se rompe." },
+    { titulo: "PELÍCULA 11", img: "imagenes/harry.jpg", desc: "Magia y aventura: secretos antiguos vuelven a despertar." }
+  ];
+
+  const lista = document.getElementById("listaPeliculas");
+  const buscador = document.getElementById("buscador");
+
+  function formatearFecha(yyyyMMdd){
+    const [y,m,d] = yyyyMMdd.split("-");
+    return `${d}/${m}/${y}`;
+  }
+
+  function pintarPeliculas(filtro=""){
+    lista.innerHTML = "";
+    const filtroUpper = filtro.trim().toUpperCase();
+
+    infoPeliculas
+      .filter(p => p.titulo.includes(filtroUpper))
+      .forEach((peli, index) => {
+        const tieneCartelera = !!cartelera[peli.titulo];
+        const id = "p" + index;
+
+        const card = document.createElement("article");
+        card.className = "pelicula-card";
+        card.innerHTML = `
+          <img class="pelicula-img" src="${peli.img}" alt="${peli.titulo}">
+          <div class="pelicula-info">
+            <h3>${peli.titulo}</h3>
+            <p class="pelicula-desc">${peli.desc}</p>
+
+            <div class="pelicula-compra">
+              <select class="dia" ${tieneCartelera ? "" : "disabled"}>
+                <option selected disabled>Elegir día</option>
+              </select>
+
+              <select class="hora" disabled>
+                <option selected disabled>Elegir hora</option>
+              </select>
+
+              <button class="btn-comprar" disabled>Comprar</button>
+            </div>
+
+            <p class="resumen-compra" id="res-${id}"></p>
+          </div>
+        `;
+        lista.appendChild(card);
+
+        // Si no tiene cartelera, avisar
+        if(!tieneCartelera){
+          card.querySelector(".pelicula-desc").insertAdjacentHTML(
+            "beforeend",
+            `<br><span class="sin-horarios">Sin horarios disponibles</span>`
+          );
+          return;
+        }
+
+        const selectDia = card.querySelector(".dia");
+        const selectHora = card.querySelector(".hora");
+        const btn = card.querySelector(".btn-comprar");
+        const resumen = card.querySelector(".resumen-compra");
+
+        // cargar días
+        Object.keys(cartelera[peli.titulo]).forEach(dia => {
+          const opt = document.createElement("option");
+          opt.value = dia;
+          opt.textContent = formatearFecha(dia);
+          selectDia.appendChild(opt);
+        });
+
+        // al elegir día -> cargar horas
+        selectDia.addEventListener("change", () => {
+          selectHora.innerHTML = `<option selected disabled>Elegir hora</option>`;
+          selectHora.disabled = false;
+          btn.disabled = true;
+          resumen.textContent = "";
+
+          cartelera[peli.titulo][selectDia.value].forEach(h => {
+            const opt = document.createElement("option");
+            opt.value = h;
+            opt.textContent = h;
+            selectHora.appendChild(opt);
+          });
+        });
+
+        // al elegir hora -> activar botón
+        selectHora.addEventListener("change", () => {
+          btn.disabled = false;
+          resumen.textContent = `Seleccionado: ${peli.titulo} · ${formatearFecha(selectDia.value)} · ${selectHora.value}`;
+        });
+
+        // simular compra
+        btn.addEventListener("click", () => {
+          alert(
+            ` Compra \n\nPelícula: ${peli.titulo}\nDía: ${formatearFecha(selectDia.value)}\nHora: ${selectHora.value}`
+          );
+        });
+      });
+  }
+
+  // pintar al cargar
+  pintarPeliculas();
+
+  // buscador
+  buscador.addEventListener("input", (e) => pintarPeliculas(e.target.value));
+</script>
+</body>
+</html>
+    
+</body>
+</html>
