@@ -9,9 +9,19 @@ import java.util.ArrayList;
 import connection.DBConnection;
 import pojos.Sesion;
 import pojos.Sala;
-
+/**
+ * Esta clase gestiona el acceso a datos de la tabla sesion.
+ * Permite consultar sesiones de una pelicula.
+ */
 public class SesionDAO {
-
+	/**
+	 * Retorna todas las sesiones de una pelicula ordenadas por fecha y hora.
+	 * 
+	 * Si la consulta no devuelve nada, retorna una lista vacia.
+	 * 
+	 * @param idPelicula id de la pelicula
+	 * @return lista de sesiones
+	 */
     public ArrayList<Sesion> getSesionesPorPeliculaOrdenadas(int idPelicula) {
 
         ArrayList<Sesion> sesiones = new ArrayList<>();

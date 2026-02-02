@@ -1,27 +1,27 @@
 package gestor;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
-//had method katzid  linea
+/**
+ * Esta clase gestiona la escritura del ticket en un fichero.
+ * Permite añadir lineas al final del fichero ticket.txt.
+ */
 public class GestorTicketFichero {
 
 	private static final String NOMBRE_FICHERO = "ticket.txt";
-	private static final String RUTA_ABSOLUTA_FICHERO = "";// se guarda dentro del proyecto
+	private static final String RUTA_ABSOLUTA_FICHERO = "tickets/";
 
 	/**
-	 * Aniade un texto al final del fichero
+	 * Añade una linea de texto al final del fichero ticket.txt.
 	 * 
-	 * @param textoAActualizar
+	 * @param textoAActualizar texto a escribir en el fichero
 	 */
-	//katst9bl string (texto) okatzido f akhir milf 
 	public void actualizarFichero(String textoAActualizar) {
+		//katst9bl string (texto) okatzido f akhir milf 
+
 		//kanft7o file fin nktno
 		FileWriter fileWriter = null;
 		//kayshl lktaba b print

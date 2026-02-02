@@ -9,11 +9,21 @@ import java.util.ArrayList;
 
 import connection.DBConnection;
 import pojos.Pelicula;
+/**
+ * Esta clase gestiona el acceso a datos de la tabla pelicula.
+ * Permite consultar todas las peliculas disponibles.
+ */
 
 public class PeliculaDAO {
-
+	/**
+	 * Retorna todas las peliculas disponibles en la base de datos.
+	 * 
+	 * Si la consulta no devuelve nada, retorna NULL.
+	 * 
+	 * @return lista de peliculas o null
+	 */
 	public ArrayList<Pelicula> getAllpeliculas() {
-		ArrayList<Pelicula> ret = null;
+		ArrayList<Pelicula> pelis = null;
 		// SQL que queremos lanzar
 		String sql =
 			    "SELECT p.* " +
@@ -45,8 +55,8 @@ public class PeliculaDAO {
 			while (resultSet.next()) {
 
 				// Hay al menos una fila en el cursos, inicializamos el ArrayList
-				if (null == ret)
-					ret = new ArrayList<Pelicula>();
+				if (null == pelis)
+					pelis = new ArrayList<Pelicula>();
 
 				// nuevo object de cada row
 				Pelicula peli = new Pelicula();
@@ -61,7 +71,7 @@ public class PeliculaDAO {
 				peli.setPrecio(resultSet.getDouble("precio"));
 
 				// Lo guardamos en la lista
-				ret.add(peli);
+				pelis.add(peli);
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -88,7 +98,7 @@ public class PeliculaDAO {
 				// No hace falta
 			}
 		}
-		return ret;
+		return pelis;
 	}
 
 }

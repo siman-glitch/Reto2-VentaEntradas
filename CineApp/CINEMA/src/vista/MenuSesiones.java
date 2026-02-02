@@ -7,15 +7,29 @@ import dao.SesionDAO;
 import pojos.Pelicula;
 import pojos.Sesion;
 
+
+/**
+ * Esta clase gestiona el menu de sesiones.
+ * Permite mostrar las sesiones de una pelicula y seleccionar una sesion.
+ */
 public class MenuSesiones {
 	private final Scanner sc;
 	private final SesionDAO sesiondao;
-
+	/**
+	 * Constructor del menu de sesiones.
+	 * 
+	 * @param sc Scanner para leer datos del usuario
+	 */
 	public MenuSesiones(Scanner sc) {
 	    this.sc =  sc;
 		this.sesiondao = new SesionDAO();
 	}
-
+	/**
+	 * Muestra todas las sesiones disponibles de una pelicula.
+	 * 
+	 * @param peliElegida Pelicula seleccionada por el usuario
+	 * @return lista de sesiones o null si no hay sesiones o no hay pelicula seleccionada
+	 */
 	public ArrayList<Sesion> mostrarsesiones(Pelicula peliElegida) {
 		
 		if (peliElegida == null) {
@@ -37,7 +51,14 @@ public class MenuSesiones {
 
 		return sesiones;
 	}
-
+	/**
+	 * Permite al usuario elegir una sesion de la lista.
+	 * 
+	 * Si el usuario responde "no", retorna null.
+	 * 
+	 * @param sesiones Lista de sesiones disponibles
+	 * @return sesion elegida o null si no se elige ninguna
+	 */
 	public Sesion sesionelegida(ArrayList<Sesion> sesiones) {
 		// ila khtar no ayb9a null oila khtar si ayrja3 peli
 
@@ -74,7 +95,11 @@ public class MenuSesiones {
 		return ret;
 
 	}
-
+	/**
+	 * Muestra por pantalla la informacion de una sesion.
+	 * 
+	 * @param sesion Sesion a imprimir
+	 */
 	private void imprimirSesion(Sesion sesion) {
 	    System.out.println(
 	        sesion.getFecha() + "|" +
@@ -84,7 +109,13 @@ public class MenuSesiones {
 	        "Sala: " + sesion.getSala().getNombre()
 	    );
 	}
-
+	/**
+	 * Pide una opcion valida al usuario dentro de un rango.
+	 * 
+	 * @param min valor minimo permitido
+	 * @param max valor maximo permitido
+	 * @return opcion valida introducida por el usuario
+	 */
 	private int opcionSesionvalida(int min,int max) 	{
 	
 		int opcion=-1;

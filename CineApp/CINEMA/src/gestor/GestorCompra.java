@@ -9,6 +9,11 @@ import pojos.Pelicula;
 import pojos.Sesion;
 import vista.MenuSesiones;
 import vista.MenuPeliculas;
+/**
+ * Esta clase gestiona la compra del cliente.
+ * Controla el carrito de entradas, calcula totales y descuentos,
+ * muestra el resumen y permite guardar el ticket.
+ */
 
 public class GestorCompra {
 	private final Scanner sc;
@@ -16,7 +21,11 @@ public class GestorCompra {
 	private final List<Entrada> carrito;
 	private final MenuSesiones seselegida;
 	private final MenuPeliculas menupelis;
-
+	/**
+	 * Constructor del gestor de compra.
+	 * 
+	 * @param sc Scanner para leer datos del usuario
+	 */
 	public GestorCompra(Scanner sc) {
 		this.sc = sc;
 		this.carrito = new ArrayList<>();
@@ -26,12 +35,18 @@ public class GestorCompra {
 		this.sesiones = new ArrayList<>();
 
 	}
-//bhala kat9ol method anan kna9bl ri had 2 x y 
-//fash an3yto 3la maethod gestor.adddentr 3ad kayt3mro had sesionElegida, numPersonas);
-//sesion = sesionElegida;
-//numPersonas = numPersonas;jaav hadxi likatfhm 
 
+	/**
+	 * Añade una sesion al carrito creando una entrada con su numero de personas.
+	 * 
+	 * @param sesion sesion seleccionada
+	 * @param numPersonas numero de personas
+	 */
 	public void addalCarrito(Sesion sesion, int numPersonas) {
+		//bhala kat9ol method anan kna9bl ri had 2 x y 
+		//fash an3yto 3la maethod gestor.adddentr 3ad kayt3mro had sesionElegida, numPersonas);
+		//sesion = sesionElegida;
+		//numPersonas = numPersonas;jaav hadxi likatfhm 
 	    Entrada entrada = new Entrada();
 	    entrada.setSesion(sesion);
 	    entrada.setNumpersonas(numPersonas);
@@ -41,16 +56,30 @@ public class GestorCompra {
 
 	    carrito.add(entrada);
 	}
+	/**
+	 * Retorna el carrito de entradas.
+	 * 
+	 * @return lista de entradas del carrito
+	 */
 	public List<Entrada> getCarrito() {
 		return carrito;
 	}
-	public void resetCarrito() {
+	/**
+	 * Vacía el carrito de compra.
+	 */
+	public void borraCarrito() {
 	    carrito.clear();
 	}
-	// doz ela kol ticket jma3 total dyalo
-	// kola persona =entrada
-	// entrada=precio
+	/**
+	 * Calcula el total sin descuento sumando los subtotales del carrito.
+	 * 
+	 * @return total sin descuento
+	 */
+	
 	public double CalcularTotal() {
+		// doz ela kol ticket jma3 total dyalo
+		// kola persona =entrada
+		// entrada=precio
 		double total = 0;
 		for (Entrada entrada : carrito) {
 			total += entrada.getPrecio();
@@ -58,7 +87,11 @@ public class GestorCompra {
 
 		return total;
 	}
-
+	/**
+	 * Calcula el descuento segun el numero de peliculas diferentes.
+	 * 
+	 * @return descuento aplicado (0.0, 0.20 o 0.30)
+	 */
 	public double calcularDescuento() {
 		int numpelis = peliculasDiferentes();
 
@@ -69,7 +102,11 @@ public class GestorCompra {
 		return 0.0;
 
 	}
-
+	/**
+	 * Cuenta el numero de peliculas diferentes dentro del carrito.
+	 * 
+	 * @return numero de peliculas distintas
+	 */
 	public int peliculasDiferentes() {
 		ArrayList<Pelicula> peliculas = new ArrayList<>();
 
@@ -95,7 +132,11 @@ public class GestorCompra {
 
 		return peliculas.size();
 	}
-
+	/**
+	 * Calcula el total final aplicando el descuento al total.
+	 * 
+	 * @return total final con descuento
+	 */
 	public double calcularTotalFinal() {
 		// total=40euro
 		// totlfinal=40(1-0.20)2pelis
@@ -104,7 +145,10 @@ public class GestorCompra {
 		return Tfinale;
 
 	}
-	
+	/**
+	 * Muestra por pantalla el resumen de la compra.
+	 * Imprime sesiones, personas, subtotales, total y descuento.
+	 */
 	public void mostrarResumen() {
 
 	    System.out.println("\n================= RESUMEN COMPRA =================");
@@ -135,7 +179,9 @@ public class GestorCompra {
 	    System.out.println("TOTAL FINAL: " + calcularTotalFinal() + " €");
 	    System.out.println("==================================================\n");
 	}
-
+	/**
+	 * Guarda el ticket en un fichero con las entradas del carrito y los totales.
+	 */
 	public void guardarTicket() {
 		// para guardar ticket
 		GestorTicketFichero gestorfile = new GestorTicketFichero();

@@ -1,6 +1,5 @@
 package main;
 
-import vista.MenuCompra;
 import vista.MenuPrincipal;
 
 public class Launcher {

@@ -9,6 +9,11 @@ import pojos.Entrada;
 import pojos.Pelicula;
 import pojos.Sesion;
 
+
+/**
+ * Esta clase gestiona el menu de peliculas.
+ * Permite mostrar las peliculas disponibles y seleccionar una pelicula.
+ */
 public class MenuPeliculas {
 	private static Scanner sc = null;
 	private final PeliculaDAO peliculadao;
@@ -22,7 +27,11 @@ public class MenuPeliculas {
 
 		sc = new Scanner(System.in);
 	}
-
+	/**
+	 * Muestra todas las peliculas disponibles.
+	 * 
+	 * @return lista de peliculas o null si no hay peliculas
+	 */
 	public ArrayList<Pelicula> mostrarpeliculas() {
 		// getaalpelis katrd lista d pelis logique ndiroha arrylist
 		ArrayList<Pelicula> peliculas = peliculadao.getAllpeliculas();
@@ -39,8 +48,14 @@ public class MenuPeliculas {
 		// nrj3o la liste
 		return peliculas;
 	}
-
-	// usuario khso ikhtar peli mn lista peliculas
+	/**
+	 * Permite al usuario elegir una pelicula de la lista.
+	 * 
+	 * Si el usuario responde "no", retorna null.
+	 * 
+	 * @param peliculas Lista de peliculas disponibles
+	 * @return pelicula elegida o null si no se elige ninguna
+	 */
 	public Pelicula elegirPeli(ArrayList<Pelicula> peliculas) {
 		// ila khtar no ayb9a null oila khtar si ayrja3 peli
 		Pelicula ret = null;
@@ -68,6 +83,13 @@ public class MenuPeliculas {
 		}
 		return ret;
 	}
+	/**
+	 * Pide una opcion valida al usuario dentro de un rango.
+	 * 
+	 * @param min valor minimo permitido
+	 * @param max valor maximo permitido
+	 * @return opcion valida introducida por el usuario
+	 */
 
 	private int opcionvalida(int min, int max) {
 		int opcion = -1;

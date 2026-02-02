@@ -28,6 +28,11 @@ public class MenuPrincipal {
 		sc.nextLine();
 	}
 
+	/**
+	 * Gestiona el inicio de sesion del cliente.
+	 * Si el login es correcto, entra al menu de compra.
+	 * Si el login falla, pregunta si el usuario quiere registrarse.
+	 */
 	public void login() {
 		inicio();
 		boolean continuar = true;
@@ -63,6 +68,11 @@ public class MenuPrincipal {
 		}
 
 	}
+	/**
+	 * Pregunta al usuario si quiere registrarse.
+	 * 
+	 * @return true si se quiere salir del programa, false para volver a iniciar sesion
+	 */
 
 	public static boolean preguntarRegistro() {
 		System.out.print("¿Quieres registrarte y disfrutar de ventajas exclusivas? (si/no?): ");
@@ -74,12 +84,14 @@ public class MenuPrincipal {
 
 		} else {
 
-			System.out.println("Gracias por usar MyCine. ¡Hasta pronto!");
-			return true;
+			System.out.println("Gracias por usar MyCine. Volviendo a iniciar sesión...");
+			return false;
 		}
 
 	}
-
+	/**
+	 * Registra un nuevo cliente pidiendo sus datos y guardandolos en la BDD.
+	 */
 	public static void Registrar() {
 		System.out.println("*****************************************");
 		System.out.println("*              REGÍSTRATE               *");
@@ -112,7 +124,11 @@ public class MenuPrincipal {
 		}
 
 	}
-
+	/**
+	 * Pide y valida el DNI del cliente.
+	 * 
+	 * @return DNI valido
+	 */
 	public static String pedirDNI() {
 		String dni;
 		while (true) {
@@ -124,6 +140,11 @@ public class MenuPrincipal {
 			}
 		}
 	}
+	/**
+	 * Pide y valida el nombre del cliente.
+	 * 
+	 * @return nombre valido
+	 */
 
 	public static String pedirNombre() {
 		String nombre;
@@ -136,6 +157,11 @@ public class MenuPrincipal {
 			}
 		}
 	}
+	/**
+	 * Pide y valida los apellidos del cliente.
+	 * 
+	 * @return apellidos validos
+	 */
 
 	public static String pedirApellido() {
 		String apellido;
@@ -148,7 +174,11 @@ public class MenuPrincipal {
 			}
 		}
 	}
-
+	/**
+	 * Pide y valida el correo del cliente.
+	 * 
+	 * @return correo valido
+	 */
 	public static String pedirCorreo() {
 		String correo;
 		while (true) {
@@ -160,7 +190,11 @@ public class MenuPrincipal {
 			}
 		}
 	}
-
+	/**
+	 * Pide y valida la contrasena del cliente.
+	 * 
+	 * @return contrasena valida
+	 */
 	public static String pedirContrasena() {
 		String pass;
 		while (true) {

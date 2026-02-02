@@ -9,13 +9,28 @@ import java.sql.Statement;
 import connection.DBConnection;
 import pojos.Cliente;
 
+/**
+ * Esta clase gestiona el acceso a datos de la tabla cliente.
+ * Permite hacer login e insertar clientes en la base de datos.
+ */
 
 public class ClienteDAO {
+	/**
+	 * Busca un cliente en la tabla cliente usando correo y contrasena.
+	 * 
+	 * Si existe, retorna un Cliente. Si no existe, retorna null.
+	 * 
+	 * @param correo correo del cliente
+	 * @param contrasnea contrasena del cliente
+	 * @return cliente encontrado o null
+	 */
 	public Cliente  logincliente(String correo,String contrasnea ) {
 		Cliente c=null;
 
 		// SQL que queremos lanzar
-		String sql = "SELECT * FROM cliente WHERE correoElectronico='"  + correo + "' AND contrasena='" + contrasnea + "'";
+		String sql = "SELECT * FROM cliente WHERE correoElectronico='" + correo + "' AND contrasena='" + contrasnea + "'";
+
+	
 		// La conexion con BBDD
 				Connection connection = null;
 		        Statement statement = null;
@@ -73,6 +88,11 @@ public class ClienteDAO {
 				}
 				return c;
 			}
+	/**
+	 * Inserta un cliente en la tabla cliente.
+	 * 
+	 * @param cliente cliente a insertar
+	 */
 	public void insertCliente(	Cliente cliente) {
 		// La conexion con BBDD
 		Connection connection = null;
