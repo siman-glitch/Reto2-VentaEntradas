@@ -4,7 +4,7 @@ body{
   padding: 0;
   background: rgb(10,10,10);
   color: white;
-  padding-bottom: 300px; /* espacio para compra rápida fija */
+  padding-bottom: 0; /* por defecto NO hay hueco */
 }
 
 /* =================== HEADER =================== */
@@ -61,7 +61,7 @@ nav a:hover{
   background: lightgray;
   border: none;
   outline: none;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 10px;
 }
 
 .header-img{
@@ -205,7 +205,7 @@ main{
 
 .proxi-texto{
   margin-top: 20px;
-  color: #e0e0e0;          /*  texto visible */
+  color: #e0e0e0;
   font-size: 16px;
   line-height: 1.6;
   text-align: center;
@@ -215,6 +215,7 @@ main{
 }
 
 /* ==========================  login page    ===================== */
+/* (NO TOCADO) */
 
 .imglogin{
   background: url("imagenes/logo4.avif") center/cover no-repeat;
@@ -264,7 +265,6 @@ main{
   margin-bottom: 14px;
 }
 
-/* input style */
 .imglogin .correo input,
 .imglogin .contrasena input{
   width: 100%;
@@ -278,7 +278,7 @@ main{
 
 .imglogin .contrasena{
   position: relative;
-  padding-right: 10px; /* space for mostrar */
+  padding-right: 10px;
 }
 
 .imglogin .mostrar{
@@ -293,7 +293,6 @@ main{
   user-select: none;
 }
 
-/* ===== button ===== */
 .imglogin .btn{
   width: 100%;
   margin-top: 8px;
@@ -315,7 +314,6 @@ main{
   filter: brightness(0.92);
 }
 
-/* register */
 .imglogin .registra{
   margin-top: 18px;
   color: #fff;
@@ -338,7 +336,11 @@ main{
   }
 
   body{
-    padding-bottom: 340px;
+    padding-bottom: 0; /*  NO padding para todas */
+  }
+
+  body.con-quick{
+    padding-bottom: 520px; /*  solo index */
   }
 }
 
@@ -453,3 +455,90 @@ main{
   }
 }
 
+
+/* =================== FOOTER =================== */
+.footer{
+  margin-top: 60px;
+  background: rgba(113,113,113,0.14);
+  backdrop-filter: blur(6px);
+  padding: 35px 50px 15px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 30px;
+}
+
+.footer-col h3{
+  margin: 0 0 10px;
+  color: lightgray;
+  font-size: 28px;
+}
+
+.footer-col h4{
+  margin: 0 0 10px;
+  color: lightgray;
+  font-size: 18px;
+}
+
+.footer-col p{
+  margin: 6px 0;
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+.footer-col a{
+  display: block;
+  text-decoration: none;
+  color: #d0d0d0;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+.footer-col a:hover{
+  color: red;
+}
+
+.footer-bottom{
+  margin-top: 25px;
+  text-align: center;
+  color: #bdbdbd;
+  font-size: 14px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* responsive footer */
+@media (max-width: 900px){
+  .footer{
+    padding: 30px 25px 15px;
+  }
+
+  .footer-inner{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-col a{
+    text-align: center;
+  }
+}
+
+body.con-quick{
+  padding-bottom: 0px;
+}
+
+/* En móviles (si quieres mantener tu ajuste de 340px) */
+@media (max-width: 900px){
+  body.con-quick{
+    padding-bottom: 460px;
+  }
+}
+
+body.con-quick .footer{
+  margin-bottom: 150px; /* espacio real para que el footer no quede debajo de .quick */
+}
