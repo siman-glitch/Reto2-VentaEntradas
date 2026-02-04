@@ -33,7 +33,7 @@ Toda la información se apoya en una base de datos relacional MySQL.
 - Seguir el proceso de simulación de compra de entradas.
 
 ## Autor
-Proyecto realizado por **Siman**   **jefrrey**  **houdaifa**
+Proyecto realizado por **Siman**   **jefrrey**  
 1º DAw – Reto 2 - grupo 3 
 - Eclipse IDE
 - JUnit (tests unitarios)
